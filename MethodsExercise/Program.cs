@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Windows.Markup;
 using System.Xml.Schema;
 
 namespace MethodsExercise
@@ -21,6 +22,8 @@ namespace MethodsExercise
             Console.WriteLine($"The longest hypotenuse length those two sides could create must be less than {maxlength(num1, num2)}.\n"); // finds the max possible length
             Console.WriteLine($"The shortest hypotenuse length those two sides could create must be larger than {minlength(num1, num2)}.\n"); // finds the min possible length
             Console.WriteLine($"The sum of 5 and 12 is {sum(5, 12)}.\n");
+
+            Console.Write($"The sum of multiple digits for this example is: {sums(2, 3, 4, 12)}.\n");
         }
 
         public static void story()
@@ -42,27 +45,37 @@ namespace MethodsExercise
                 $"{teamout}\n");
         }
 
-        public static double hyp(double num1, double num2)
+        public static double hyp(double num1, double num2) // calculates the hypotenuse
         {
             double total = Math.Round(Math.Sqrt(Math.Pow(num1, 2) + Math.Pow(num2, 2)),2);
             return total;
         }
 
-        public static double maxlength(double num1, double num2)
+        public static double maxlength(double num1, double num2) // calculates the max length of the hypotenuse
         {
             double total = Math.Round((num1 + num2),2);
             return total;
         }
 
-        public static double minlength(double num1, double num2) 
+        public static double minlength(double num1, double num2)  // calculates the min length of the hypotenuse
         {
             double total = Math.Round(Math.Abs(num1 - num2),2);
             return total;
         }
 
-        public static int sum(int a, int b)
+        public static int sum(int a, int b) // sums two numbers
         {
             return a + b; 
+        }
+
+        public static int sums(params int[] ints)
+        {
+            int sum = 0;
+            foreach (int value in ints)
+            {
+                sum += value;
+            }
+            return sum;
         }
     }
 }
